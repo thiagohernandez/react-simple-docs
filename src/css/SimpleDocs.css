@@ -1,0 +1,86 @@
+/*
+// RESET
+*/
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+  }
+  
+  /*
+  // CSS VARS
+  */
+  :root {
+    --lighter-gray : #F3F6F9;
+    --gray : #515863;
+    --dark-gray : #3D424A;
+    --darker-gray : #1E2125;
+  
+    --accent-color: #5C5EDC;
+  }
+
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -moz-font-feature-settings: "liga" on;
+    color: var(--dark-gray);
+    padding-top: 0;
+    font-size: 1rem;
+    background-color: var(--lighter-gray);
+    overflow-x: hidden;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--accent-color);
+  }
+
+
+  /* STRUCTURE */
+  .container {
+    max-width: 1199px;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+/* UI */
+.animRight {
+    transform: translateX(82px);
+    opacity: 0;
+    animation: animRight 0.3s forwards;
+}
+  
+@keyframes animRight {
+    to {
+      transform: initial;
+      opacity: initial;
+    }
+}
+  
+.loading {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 10px solid #ccc;
+    border-right-color: transparent;
+    animation: loading 1s infinite;
+}
+  
+@keyframes loading {
+    to {
+      transform: rotate(360deg);
+    }
+}

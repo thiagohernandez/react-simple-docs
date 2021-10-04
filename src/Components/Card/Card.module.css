@@ -1,0 +1,19 @@
+.cardDoc {
+    display: -ms-flexbox;
+    display: flex;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    background-color: #fff;
+    border-radius: 0.25rem;
+
+    border: 1px solid transparent;
+    transition-property: box-shadow, border;
+    transition: 300ms ease-in-out;
+
+    box-shadow: 0 0 0 rgba(50, 50, 75,0.25);
+}
+
+.cardDoc:hover {
+    border: 1px solid rgba(50, 50, 75,0.25);
+    box-shadow: 0 12px 25px -25px rgba(50, 50, 75,0.25);
+}
