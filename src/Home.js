@@ -9,6 +9,7 @@ const Home = ({data}) => {
         <h1>
             Home
         </h1>
+        <Link to='/create' className="btn btn-add">Add new</Link>
         {
           data.map((dataItem) => (
             <Card key={dataItem.id} data={dataItem} />

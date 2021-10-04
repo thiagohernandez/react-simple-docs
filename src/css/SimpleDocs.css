@@ -84,3 +84,13 @@ html {
       transform: rotate(360deg);
     }
 }
+
+.badge {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid rgba(92,92,220, 0.05);
+  background-color: rgba(92,92,220, 0.1);
+  border-radius: 1rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
