@@ -15,6 +15,7 @@ function App() {
       id : 1,
       title : 'Simple budget',
       type : 'Advanced',
+      text: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur',
       image : '/public/img01.jpg',
       date: '02/10/2021'
     },
@@ -22,12 +23,14 @@ function App() {
       id : 2,
       title : 'My notes',
       type : 'Advanced',
+      text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec.',
       image : '/public/img02.jpg',
       date: '29/09/2021'
     },
     {
       id : 3,
       title : 'Roadmap',
+      text: null,
       type : 'Simple',
       image : '/public/img02.jpg',
       date: '29/09/2021'
@@ -48,9 +51,9 @@ function App() {
       <BrowserRouter>
       <Header />
         <Routes>
-          <Route path="/" element={<Home data={data} setData={setData}/>} />
+          <Route path="/" element={<Home data={data} setData={setData} />} />
           <Route path="document/:id" element={<Document data={data} setData={setData}/>} />
-          <Route path="/create" element={<Create data={data} setData={setData}/>} />
+          <Route path="/create" element={<Create data={data} setData={setData} dataSize={dataSize} setDataSize={setDataSize}/>} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </BrowserRouter>
