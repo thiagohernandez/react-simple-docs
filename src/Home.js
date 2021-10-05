@@ -6,10 +6,15 @@ const Home = ({data}) => {
     console.log(data);
   return (
       <div className="container animRight">
-        <h1>
-            Home
-        </h1>
-        <Link to='/create' className="btn btn-add">Add new</Link>
+        <div className="pageHeader">
+          <div className="pageTitle">
+            <h1>All Docs</h1>
+          </div>
+          <div className="pageActions">
+            <Link to='/create' className="btn btn-accent">Add new</Link>
+          </div>
+        </div>
+        
         {
           data.map((dataItem) => (
             <Card key={dataItem.id} data={dataItem} />

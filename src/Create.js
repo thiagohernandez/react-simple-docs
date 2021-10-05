@@ -1,5 +1,4 @@
 import React from 'react';
-//import { useParams, useNavigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const Create = ({data, setData, dataSize, setDataSize}) => {
@@ -10,7 +9,7 @@ const Create = ({data, setData, dataSize, setDataSize}) => {
   const [form, setForm] = React.useState({
     id : '',
     title : '',
-    type : '',
+    type : 'Simple',
     text: '',
     image : '',
     date: '',
@@ -21,16 +20,46 @@ const Create = ({data, setData, dataSize, setDataSize}) => {
     setForm({ ...form, [id]: value });
   }
 
+  /* 
+  //Experimental
+  */
+  const [baseImage, setBaseImage] = React.useState("");
+  const uploadImage = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertBase64(file);
+    setBaseImage(base64);
+    
+  };
+
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+  /* 
+  // ./end Experimental
+  */
+
 
   function createDocument(event) {    
     event.preventDefault();
 
-    const setID = data.length+20;
+    const setID = dataSize+1;
     setDataSize(setID);
     console.log(dataSize);
     
-    form.id = data.length+1;
-    console.log(form.id);
+    form.id = dataSize;
+    form.image = baseImage;
+    
     //const newData = data.push(form[0]);
     //setData(newData);
     console.log(form);
@@ -44,23 +73,47 @@ const Create = ({data, setData, dataSize, setDataSize}) => {
   
   return (
     <div className="container animRight">
+        <h1>Create new document</h1>
         <form onSubmit={createDocument}>
-          <div className="fieldWrapper">
-            <label htmlFor="title">title</label>
-            <input type="text" id="title" value={form.title} onChange={handleChange} />
-          </div>
-          {
-            form.title
-          }
-          <div className="fieldWrapper">
-            <label htmlFor="date">Date</label>
-            <input type="date" id="date" value={form.date} onChange={handleChange} />
-          </div>
-          {
-            form.date
-          }
-          
-          <button className="btn btn-add">Add document</button>
+            <div className="fieldWrapper">
+                <label htmlFor="title">Title</label>
+                <input className="formControl" type="text" id="title" value={form.title} onChange={handleChange} />
+            </div>
+            {
+                form.title
+            }
+            <div className="fieldWrapper">
+                <label htmlFor="date">Date</label>
+                <input className="formControl" type="date" id="date" value={form.date} onChange={handleChange} />
+            </div>
+            {
+                form.date
+            }
+            <div className="fieldWrapper">
+                <label htmlFor="type">Type</label>
+                <select className="formControl" value={form.type} id="type" onChange={handleChange}>
+                    <option value="Simple">Simple</option>
+                    <option value="Custom">Custom</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+            </div>
+            {
+                form.type != 'Simple' && 
+                <div className="fieldWrapper">
+                    <label htmlFor="text">Text</label>
+                    <input className="formControl" type="text" id="text" value={form.text} onChange={handleChange} />
+                </div>
+            }
+            {
+                form.type == 'Advanced' &&
+                <div className="fieldWrapper">
+                    <label htmlFor="image">Image</label>
+                    <input className="formControl" type="file" onChange={(e) => { uploadImage(e); }} />
+                </div>
+            } 
+            <div class="formActions">
+                <button className="btn btn-accent">Save document</button>
+            </div>
         </form>
           
             

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 const Document = ({data, setData}) => {
   const params = useParams();
@@ -13,16 +13,43 @@ const Document = ({data, setData}) => {
   
   return (
     <div className="container animRight">
+        
         {data.filter(dataItem => dataItem.id == params.id).map(dataDocument => (
           <div className="pageDocument" key={dataDocument.id}>
-            <h1>{dataDocument.title}</h1>
-            <h2>{dataDocument.type}</h2>
-            <button onClick={deleteDocument}>Delete</button>
+            <div className="pageDocumentNav">
+                <Link className="btn btn-link" to='/'>Previous Document</Link>
+                <Link className="btn btn-link" to='/'>Next Document</Link>
+            </div>
+            <div className="pageHeader">
+              <div className="pageTitle">
+                <h1>{dataDocument.title}</h1>
+                <div className="badge">{dataDocument.type}</div>
+              </div>
+            </div>
+            <div className="pageBody">
+              
+                {
+                  dataDocument.type != 'Simple' &&
+                  <div className="pageBodyContent" dangerouslySetInnerHTML={{ __html: dataDocument.text }} />
+                }
+                {
+                  dataDocument.type == 'Advanced' &&
+                  <div className="pageBodyImage">
+                      <img src={dataDocument.image ? dataDocument.image : 'img/thumbnail.jpg'} alt={dataDocument.title} loading="lazy" />    
+                  </div>
+                }
+              
+            </div>
+            <div className="pageFooter">
+              <div className="pageActions">
+                <button className="btn btn-accent" onClick={deleteDocument}>Delete Document</button>
+              </div>
+            </div>
+
+            
+            
           </div>
         ))}
-      <h3>
-        id: {params.id}
-      </h3>
     </div>
     
   );
