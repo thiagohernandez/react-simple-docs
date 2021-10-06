@@ -6,6 +6,7 @@ import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import Home from './Home';
 import Document from './Document';
+import Filter from './Filter';
 import Create from './Create';
 import Page404 from './Page404';
 
@@ -53,6 +54,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home data={data} setData={setData} />} />
           <Route path="document/:id" element={<Document data={data} setData={setData}/>} />
+          <Route path="filter/:type" element={<Filter data={data} />} />
           <Route path="/create" element={<Create data={data} setData={setData} dataSize={dataSize} setDataSize={setDataSize}/>} />
           <Route path="*" element={<Page404 />} />
         </Routes>

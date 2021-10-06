@@ -1,24 +1,22 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import Card from './Components/Card/Card';
 
+const Filter = ({data}) => {
+    const params = useParams();
+    const [select, setSelect] = React.useState('');
+    const navigate = useNavigate();
 
-
-const Home = ({data}) => {
-  const [select, setSelect] = React.useState('');
-  const navigate = useNavigate();
-
-  function handleFilter(value) { 
-    console.log(value);
-    navigate(`/filter/${value}`);
-  }
-
+    function handleFilter(value) { 
+        console.log(value);
+        navigate(`/filter/${value}`);
+    }
 
   return (
       <div className="container animRight">
         <div className="pageHeader">
           <div className="pageTitle">
-            <h1>All Docs</h1>
+            <h1><span>Documents by type:</span> {params.type}</h1>
           </div>
           <div className="pageActions">
               <select className="formControl" value={select} onChange={({ target }) => handleFilter(target.value)}>
@@ -32,12 +30,11 @@ const Home = ({data}) => {
         </div>
         
         {
-          data.map((dataItem) => (
-            <Card key={dataItem.id} data={dataItem} />
-          ))
-        }
+            data.filter(dataItem => dataItem.type == params.type).map(dataFilteredList => (
+            <Card key={dataFilteredList.id} data={dataFilteredList} />
+        ))}
       </div>
   );
 };
 
-export default Home;
+export default Filter;

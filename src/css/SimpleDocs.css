@@ -66,8 +66,17 @@ html {
   .pageHeader h1{
     margin: 0.5rem;
   }
+  .pageHeader h1 span{
+    opacity: 0.5;
+  }
   .pageActions {
-
+    display: flex;
+  }
+  .pageActions .btn.btn-accent {
+    flex-shrink: 0;
+  }
+  .pageActions select + .btn.btn-accent {
+    margin-left: 0.5rem;
   }
   .pageFooter {
     display: flex;

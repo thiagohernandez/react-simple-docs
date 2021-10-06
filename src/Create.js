@@ -79,16 +79,10 @@ const Create = ({data, setData, dataSize, setDataSize}) => {
                 <label htmlFor="title">Title</label>
                 <input className="formControl" type="text" id="title" value={form.title} onChange={handleChange} />
             </div>
-            {
-                form.title
-            }
             <div className="fieldWrapper">
                 <label htmlFor="date">Date</label>
                 <input className="formControl" type="date" id="date" value={form.date} onChange={handleChange} />
             </div>
-            {
-                form.date
-            }
             <div className="fieldWrapper">
                 <label htmlFor="type">Type</label>
                 <select className="formControl" value={form.type} id="type" onChange={handleChange}>
