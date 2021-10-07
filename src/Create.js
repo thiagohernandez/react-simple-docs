@@ -105,7 +105,7 @@ const Create = ({data, setData, dataSize, setDataSize}) => {
                     <input className="formControl" type="file" onChange={(e) => { uploadImage(e); }} />
                 </div>
             } 
-            <div class="formActions">
+            <div className="formActions">
                 <button className="btn btn-accent">Save document</button>
             </div>
         </form>

@@ -91,17 +91,15 @@ html {
   .pageBodyContent {
     font-size: 1.5rem;
     font-weight: 300;
+    padding-bottom:  1.5rem;
   }
   .pageBodyImage {
     
-    
   }
   .pageBodyImage img{
-    
     width: 100%;
     max-width: 320px;
     display: block;
-    margin: 0 auto;
     border-radius: 3px;
   }
 

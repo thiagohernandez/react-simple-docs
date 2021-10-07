@@ -17,8 +17,7 @@ const Document = ({data, setData}) => {
         {data.filter(dataItem => dataItem.id == params.id).map(dataDocument => (
           <div className="pageDocument" key={dataDocument.id}>
             <div className="pageDocumentNav">
-                <Link className="btn btn-link" to='/'>Previous Document</Link>
-                <Link className="btn btn-link" to='/'>Next Document</Link>
+                
             </div>
             <div className="pageHeader">
               <div className="pageTitle">
@@ -35,7 +34,9 @@ const Document = ({data, setData}) => {
                 {
                   dataDocument.type == 'Advanced' &&
                   <div className="pageBodyImage">
-                      <img src={dataDocument.image ? dataDocument.image : 'img/thumbnail.jpg'} alt={dataDocument.title} loading="lazy" />    
+                    {dataDocument.image &&
+                      <img src={dataDocument.image} alt={dataDocument.title} loading="lazy" />
+                    }    
                   </div>
                 }
               
